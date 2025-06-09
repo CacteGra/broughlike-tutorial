@@ -11,11 +11,26 @@ game = {
         canvas.style.width = window.innerWidth;
 
         canvas.style.height = window.innerHeight;
+        ctx.imageSmoothingEnabled = false;
 
+    },
+
+    drawSprite: function(sprite, x, y){
+        ctx.drawImage(
+        spritesheet,
+        sprite*32,
+        0,
+        32,
+        32,
+        x*tileSize,
+        y*tileSize,
+        tileSize,
+        tileSize
+    );
     },
 
     draw: function(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.fillRect (x*tileSize,y*tileSize,tileSize,tileSize);
+        game.drawSprite(0, x, y);
     }
 }

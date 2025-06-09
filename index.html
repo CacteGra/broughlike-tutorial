@@ -35,13 +35,18 @@
 
 <script>
 
-    tileSize = 64;
+    tileSize = 128;
 
     numTiles = 9;
 
     uiWidth = 4;
 
     x = y = 0;
+
+
+    spritesheet = new Image();
+
+    spritesheet.src = 'spritesheet.png';
 
     document.querySelector("html").onkeypress = function(e){
         if(e.key=="w") y--;
