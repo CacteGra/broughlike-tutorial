@@ -15,26 +15,29 @@ game = {
 
     },
 
-    drawSprite: function(sprite, x, y){
+    drawSprite: function(spritesheet, sprite, x, y){
         ctx.drawImage(
-        spritesheet,
-        sprite*32,
-        0,
-        32,
-        32,
-        x*tileSize,
-        y*tileSize,
-        tileSize,
-        tileSize
-    );
+            spritesheet,
+            sprite*32, //which sprite on spritesheet
+            0, //creates gap on spritesheet
+            32, //area on spritesheet
+            32,
+            x*tileSize, //coordinates
+            y*tileSize,
+            tileSize, //sprite size
+            tileSize
+        );
     },
+
     draw: function(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        game.drawSprite(n, x, y);
-        if (n==0){
-            n = 1;
-        } else {
-            n = 0;
+
+        for(let i=0;i<numTiles;i++){
+            for(let j=0;j<numTiles;j++){
+                map.getTile(i,j).draw();
+            }
         }
+
+        game.drawSprite(persoSpritesheet, n, x, y);
     }
 }

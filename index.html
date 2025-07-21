@@ -28,6 +28,7 @@
 
 <script src="js/game.js"></script>
 <script src="js/movements.js"></script>
+<script src="js/tile.js"></script>
 <script src="js/map.js"></script>
 <script src="js/monster.js"></script>
 <script src="js/util.js"></script>
@@ -44,20 +45,35 @@
     x = y = 0;
 
 
-    spritesheet = new Image();
+    persoSpritesheet = new Image();
 
-    spritesheet.src = 'perso-full-sprite.png';
+    persoSpritesheet.src = 'perso-spritesheet.png';
 
+    envSpritesheet = new Image();
+
+    envSpritesheet.src = 'env-spritesheet.png';
+
+    n = 0;
     document.querySelector("html").onkeypress = function(e){
+        if (n==0){
+            n = 1;
+        } else {
+            n = 0;
+        }
         if(e.key=="w") y--;
         if(e.key=="s") y++;
         if(e.key=="a") x--;
         if(e.key=="d") x++;
     };
-    n = 0;
     setInterval(game.draw, 15);
 
     game.setupCanvas();
+
+    map.generateLevel();
+
+    startingTile = map.randomPassableTile();
+    x = startingTile.x;
+    y = startingTile.y;
 
     canvas.addEventListener("touchstart", movements.touchHandler);
 
