@@ -35,7 +35,7 @@
 
 <script>
 
-    tileSize = 128;
+    tileSize = 64;
 
     numTiles = 9;
 
@@ -46,7 +46,7 @@
 
     spritesheet = new Image();
 
-    spritesheet.src = 'spritesheet.png';
+    spritesheet.src = 'perso-full-sprite.png';
 
     document.querySelector("html").onkeypress = function(e){
         if(e.key=="w") y--;
@@ -54,7 +54,7 @@
         if(e.key=="a") x--;
         if(e.key=="d") x++;
     };
-
+    n = 0;
     setInterval(game.draw, 15);
 
     game.setupCanvas();

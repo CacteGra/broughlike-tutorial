@@ -28,9 +28,13 @@ game = {
         tileSize
     );
     },
-
     draw: function(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        game.drawSprite(0, x, y);
+        game.drawSprite(n, x, y);
+        if (n==0){
+            n = 1;
+        } else {
+            n = 0;
+        }
     }
 }
