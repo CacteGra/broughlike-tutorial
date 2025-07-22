@@ -1,10 +1,13 @@
 map = {
     generateLevel: function(){
-        map.generateTiles();
+        util.tryTo('generate map', function(){
+            return map.generateTiles() == map.randomPassableTile().getConnectedTiles().length; //Check if all passable tiles are connected, fails if not (returns false)
+        });
     },
 
 
     generateTiles: function (){
+        let passableTiles=0;
         tiles = [];
         for(let i=0;i<numTiles;i++){
             tiles[i] = [];
@@ -13,9 +16,11 @@ map = {
                     tiles[i][j] = new Wall(i,j);
                 }else{
                     tiles[i][j] = new Floor(i,j);
+                    passableTiles++;
                 }
             }
         }
+        return passableTiles;
     },
 
     inBounds: function(x,y){
