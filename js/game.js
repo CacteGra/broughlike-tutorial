@@ -38,6 +38,6 @@ game = {
             }
         }
 
-        game.drawSprite(persoSpritesheet, n, x, y);
+        player.draw();
     }
 }

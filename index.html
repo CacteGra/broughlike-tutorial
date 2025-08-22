@@ -53,17 +53,11 @@
 
     envSpritesheet.src = 'env-spritesheet.png';
 
-    n = 0;
     document.querySelector("html").onkeypress = function(e){
-        if (n==0){
-            n = 1;
-        } else {
-            n = 0;
-        }
-        if(e.key=="w") y--;
-        if(e.key=="s") y++;
-        if(e.key=="a") x--;
-        if(e.key=="d") x++;
+        if(e.key=="w") player.tryMove(0, -1);
+        if(e.key=="s") player.tryMove(0, 1);
+        if(e.key=="a") player.tryMove(-1, 0);
+        if(e.key=="d") player.tryMove(1, 0);
     };
     setInterval(game.draw, 15);
 
@@ -71,9 +65,7 @@
 
     map.generateLevel();
 
-    startingTile = map.randomPassableTile();
-    x = startingTile.x;
-    y = startingTile.y;
+    player = new Player(map.randomPassableTile());
 
     canvas.addEventListener("touchstart", movements.touchHandler);
 
